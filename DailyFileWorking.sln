@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DailyFileWorking", "DailyFileWorking\DailyFileWorking.dtproj", "{1DE44E8A-78BB-4E97-8D39-112F49A5F597}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DE44E8A-78BB-4E97-8D39-112F49A5F597}.Development|Default.ActiveCfg = Development
+		{1DE44E8A-78BB-4E97-8D39-112F49A5F597}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

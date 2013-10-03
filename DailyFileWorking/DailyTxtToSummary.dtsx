@@ -1,0 +1,1377 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/14/2013 2:47:43 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="VM_W8_DEV"
+  DTS:CreatorName="VM_W8_DEV\Blake"
+  DTS:DTSID="{8429BF0C-0968-44F4-A729-D0D14F1B678D}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DailyTxtToSummary"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{974C7202-531C-45B3-8E5A-323113387AC6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VM_W8_DEV.QCLCD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{437A3F76-09B7-4650-89CE-55111C273512}"
+      DTS:ObjectName="VM_W8_DEV.QCLCD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=VM_W8_DEV;Initial Catalog=QCLCD;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VM_W8_DEV.QCLCD_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9AD8DA2F-F06B-44F9-BB93-7509F789862A}"
+      DTS:ObjectName="VM_W8_DEV.QCLCD_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=VM_W8_DEV;Initial Catalog=QCLCD_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Summary Table"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E53CA940-4471-4B1A-BF7E-3C1F223F53F2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Summary Table">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Clear Summary Table\Clear Summary Table"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D2454A45-8ABD-4486-B342-5DAD1C32A10C}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Clear Summary Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{437A3F76-09B7-4650-89CE-55111C273512}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.DailySummary" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Complete Text Load from Staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{41C27E26-D511-4D2F-9F4B-B4212BD71DFE}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Complete Text Load from Staging">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CD6F952C-20B9-40FC-BCE1-067324F3623A}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Build Summary from Text Load"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types"
+                  componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Convert Data Types"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[WBAN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WBAN"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WBAN]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[YearMonthDayStg]"
+                          cachedDataType="dbDate"
+                          cachedName="YearMonthDayStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YearMonthDayStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[TempMaxStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TempMaxStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMaxStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[TempMinStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TempMinStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMinStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[TempAvgStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TempAvgStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempAvgStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[Water1Stg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Water1Stg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[Water1Stg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[SnowFallStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SnowFallStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[SnowFallStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[PrecipTotalStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PrecipTotalStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[PrecipTotalStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[WindAvgSpeedStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WindAvgSpeedStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindAvgSpeedStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[WindMax5SpeedStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WindMax5SpeedStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax5SpeedStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input].Columns[WindMax2SpeedStg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WindMax2SpeedStg"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax2SpeedStg]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WBAN]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WBAN]"
+                          name="Copy of WBAN"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WBAN]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of YearMonthDayStg]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of YearMonthDayStg]"
+                          name="Copy of YearMonthDayStg"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YearMonthDayStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMaxStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMaxStg]"
+                          name="Copy of TempMaxStg"
+                          precision="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMaxStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMinStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMinStg]"
+                          name="Copy of TempMinStg"
+                          precision="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMinStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempAvgStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempAvgStg]"
+                          name="Copy of TempAvgStg"
+                          precision="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempAvgStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of Water1Stg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of Water1Stg]"
+                          name="Copy of Water1Stg"
+                          precision="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[Water1Stg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of SnowFallStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of SnowFallStg]"
+                          name="Copy of SnowFallStg"
+                          precision="6"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[SnowFallStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of PrecipTotalStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of PrecipTotalStg]"
+                          name="Copy of PrecipTotalStg"
+                          precision="6"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[PrecipTotalStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindAvgSpeedStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindAvgSpeedStg]"
+                          name="Copy of WindAvgSpeedStg"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindAvgSpeedStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax5SpeedStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax5SpeedStg]"
+                          name="Copy of WindMax5SpeedStg"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax5SpeedStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax2SpeedStg]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax2SpeedStg]"
+                          name="Copy of WindMax2SpeedStg"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax2SpeedStg]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Daily Summary Table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DailySummary]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[VM_W8_DEV.QCLCD]"
+                      connectionManagerRefId="Package.ConnectionManagers[VM_W8_DEV.QCLCD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of TempMaxStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of TempMaxStg"
+                          cachedPrecision="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempMax]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMaxStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of TempMinStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of TempMinStg"
+                          cachedPrecision="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempMin]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempMinStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of TempAvgStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of TempAvgStg"
+                          cachedPrecision="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempAvg]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of TempAvgStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of Water1Stg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of Water1Stg"
+                          cachedPrecision="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Water1]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of Water1Stg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of SnowFallStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of SnowFallStg"
+                          cachedPrecision="6"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[SnowFall]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of SnowFallStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of PrecipTotalStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of PrecipTotalStg"
+                          cachedPrecision="6"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[PrecipTotal]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of PrecipTotalStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of WindAvgSpeedStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of WindAvgSpeedStg"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindAvgSpeed]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindAvgSpeedStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of WindMax5SpeedStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of WindMax5SpeedStg"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindMax5Speed]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax5SpeedStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of WindMax2SpeedStg]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of WindMax2SpeedStg"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindMax2Speed]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WindMax2SpeedStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of WBAN]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Copy of WBAN"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WbanId]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of WBAN]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[Copy of YearMonthDayStg]"
+                          cachedDataType="dbDate"
+                          cachedName="Copy of YearMonthDayStg"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[YearMonthDayId]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output].Columns[Copy of YearMonthDayStg]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[YEAR]"
+                          cachedDataType="i4"
+                          cachedName="YEAR"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YEAR]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[MONTH]"
+                          cachedDataType="i4"
+                          cachedName="MONTH"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[MONTH]" />
+                        <inputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].Columns[DAY]"
+                          cachedDataType="i4"
+                          cachedName="DAY"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[DAY]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempMax]"
+                          dataType="numeric"
+                          name="TempMax"
+                          precision="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempMin]"
+                          dataType="numeric"
+                          name="TempMin"
+                          precision="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[TempAvg]"
+                          dataType="numeric"
+                          name="TempAvg"
+                          precision="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Water1]"
+                          dataType="numeric"
+                          name="Water1"
+                          precision="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[SnowFall]"
+                          dataType="numeric"
+                          name="SnowFall"
+                          precision="6"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[PrecipTotal]"
+                          dataType="numeric"
+                          name="PrecipTotal"
+                          precision="6"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindAvgSpeed]"
+                          dataType="numeric"
+                          name="WindAvgSpeed"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindMax5Speed]"
+                          dataType="numeric"
+                          name="WindMax5Speed"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WindMax2Speed]"
+                          dataType="numeric"
+                          name="WindMax2Speed"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[WbanId]"
+                          dataType="wstr"
+                          length="10"
+                          name="WbanId" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[YearMonthDayId]"
+                          dataType="dbDate"
+                          name="YearMonthDayId" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i4"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          dataType="i4"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                          dataType="i4"
+                          name="Day" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Staging Text Load"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+[WBAN],
+CAST ([YearMonthDay] as date) AS YearMonthDayStg,
+CASE WHEN ISNUMERIC([TMax]) = 0 THEN NULL ELSE [Tmax] END AS TempMaxStg,
+CASE WHEN ISNUMERIC([TMin]) = 0 THEN NULL ELSE [Tmin] END AS TempMinStg,
+CASE WHEN ISNUMERIC([Tavg]) = 0 THEN NULL ELSE [Tavg] END AS TempAvgStg,
+CASE WHEN ISNUMERIC([Water1]) = 0 THEN '0' ELSE [Water1] END AS Water1Stg,
+CASE WHEN ISNUMERIC([SnowFall]) = 0 THEN '0' ELSE [SnowFall] END AS SnowFallStg,
+CASE WHEN ISNUMERIC([PrecipTotal]) = 0 THEN '0' ELSE [PrecipTotal] END AS PrecipTotalStg,
+CASE WHEN ISNUMERIC([AvgSpeed]) = 0  THEN NULL ELSE [AvgSpeed] END AS WindAvgSpeedStg,
+CASE WHEN ISNUMERIC([Max5Speed]) = 0 THEN NULL ELSE [Max5Speed] END AS WindMax5SpeedStg,
+CASE WHEN ISNUMERIC([Max2Speed]) = 0 THEN NULL ELSE [Max2Speed] END AS WindMax2SpeedStg,
+CAST(LEFT([YearMonthDay],4) AS INT) AS YEAR,
+CAST(SUBSTRING([YearMonthDay],5,2) AS INT) AS MONTH,
+CAST(RIGHT([YearMonthDay],2) AS INT) AS DAY
+FROM
+[dbo].[DailyTextStg]
+WHERE
+[WBAN] IS NOT NULL AND
+[YearMonthDay] IS NOT NULL
+ORDER BY
+[WBAN],
+[YearMonthDay]
+
+
+-- OLD VERSION
+
+/*
+SELECT
+[WBAN],
+CAST ([YearMonthDay] as date) AS YearMonthDayStg,
+CASE [Tmax] WHEN 'M' THEN NULL ELSE [Tmax] END AS TempMaxStg,
+CASE [Tmin] WHEN 'M'THEN NULL ELSE [Tmin] END AS TempMinStg,
+CASE [Tavg] WHEN 'M'THEN NULL ELSE [Tavg] END AS TempAvgStg,
+CASE [Water1] WHEN 'M'THEN NULL ELSE [Water1] END AS Water1Stg,
+CASE [SnowFall] 
+	WHEN 'M'THEN NULL 
+	WHEN '  T' THEN '0'
+	ELSE [SnowFall] 
+	END 
+	AS SnowFallStg,
+CASE [PrecipTotal] 
+	WHEN 'M'THEN NULL 
+                   WHEN 'err' THEN NULL
+	WHEN '  T' THEN '0'
+	ELSE [PrecipTotal] 
+	END 
+	AS PrecipTotalStg,
+CASE WHEN [AvgSpeed]  IN ('M','E7','','null') THEN NULL ELSE [AvgSpeed] END AS WindAvgSpeedStg,
+CASE WHEN [Max5Speed] IN ('M','E7','','null') THEN NULL ELSE [Max5Speed] END AS WindMax5SpeedStg,
+CASE WHEN [Max2Speed] IN ('M','E7','','null') THEN NULL ELSE [Max2Speed] END AS WindMax2SpeedStg,
+CAST(LEFT([YearMonthDay],4) AS INT) AS YEAR,
+CAST(SUBSTRING([YearMonthDay],5,2) AS INT) AS MONTH,
+CAST(RIGHT([YearMonthDay],2) AS INT) AS DAY
+FROM
+[dbo].[DailyTextStg]
+WHERE
+[WBAN] IS NOT NULL AND
+[YearMonthDay] IS NOT NULL
+ORDER BY
+[WBAN],
+[YearMonthDay]
+*/</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[VM_W8_DEV.QCLCD_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[VM_W8_DEV.QCLCD_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WBAN]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WBAN]"
+                          name="WBAN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMaxStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempMaxStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMaxStg]"
+                          name="TempMaxStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMinStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempMinStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempMinStg]"
+                          name="TempMinStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempAvgStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempAvgStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[TempAvgStg]"
+                          name="TempAvgStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[Water1Stg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[Water1Stg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[Water1Stg]"
+                          name="Water1Stg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[SnowFallStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[SnowFallStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[SnowFallStg]"
+                          name="SnowFallStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[PrecipTotalStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[PrecipTotalStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[PrecipTotalStg]"
+                          name="PrecipTotalStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindAvgSpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindAvgSpeedStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindAvgSpeedStg]"
+                          name="WindAvgSpeedStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax5SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindMax5SpeedStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax5SpeedStg]"
+                          name="WindMax5SpeedStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax2SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindMax2SpeedStg]"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[WindMax2SpeedStg]"
+                          name="WindMax2SpeedStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YearMonthDayStg]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[YearMonthDayStg]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YearMonthDayStg]"
+                          name="YearMonthDayStg"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YEAR]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[YEAR]"
+                          name="YEAR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[MONTH]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[MONTH]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[MONTH]"
+                          name="MONTH"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[DAY]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[DAY]"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].Columns[DAY]"
+                          name="DAY"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WBAN" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempMaxStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TempMaxStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempMinStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TempMinStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[TempAvgStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TempAvgStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[Water1Stg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Water1Stg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[SnowFallStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SnowFallStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[PrecipTotalStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PrecipTotalStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindAvgSpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WindAvgSpeedStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindMax5SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WindMax5SpeedStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[WindMax2SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WindMax2SpeedStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[YearMonthDayStg]"
+                          dataType="dbDate"
+                          name="YearMonthDayStg" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[YEAR]"
+                          dataType="i4"
+                          name="YEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[MONTH]"
+                          dataType="i4"
+                          name="MONTH" />
+                        <externalMetadataColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output].ExternalColumns[DAY]"
+                          dataType="i4"
+                          name="DAY" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WBAN]"
+                          name="WBAN" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[YearMonthDayStg]"
+                          dataType="dbDate"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[YearMonthDayStg]"
+                          name="YearMonthDayStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempMaxStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempMaxStg]"
+                          name="TempMaxStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempMinStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempMinStg]"
+                          name="TempMinStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempAvgStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[TempAvgStg]"
+                          name="TempAvgStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[Water1Stg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[Water1Stg]"
+                          name="Water1Stg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[SnowFallStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[SnowFallStg]"
+                          name="SnowFallStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[PrecipTotalStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[PrecipTotalStg]"
+                          name="PrecipTotalStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindAvgSpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindAvgSpeedStg]"
+                          name="WindAvgSpeedStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindMax5SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindMax5SpeedStg]"
+                          name="WindMax5SpeedStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindMax2SpeedStg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[WindMax2SpeedStg]"
+                          name="WindMax2SpeedStg" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[YEAR]"
+                          name="YEAR" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[MONTH]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[MONTH]"
+                          name="MONTH" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[DAY]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[DAY]"
+                          name="DAY" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load.Paths[Data Conversion Output]"
+                  endId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Import Complete Text Load from Staging\Build Summary from Text Load.Paths[OLE DB Source Output]"
+                  endId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4E5AF76D-2091-40FA-94E4-65B18F299BC3}"
+      DTS:From="Package\Clear Summary Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import Complete Text Load from Staging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Clear Summary Table\Clear Summary Table"
+          TopLeft="88,49" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="386,152"
+          Size="386,195"
+          Id="Package\Clear Summary Table"
+          TopLeft="147,92" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load"
+          TopLeft="72,34" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="385,157"
+          Size="385,200"
+          Id="Package\Import Complete Text Load from Staging"
+          TopLeft="143,356" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="337.75,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Complete Text Load from Staging\Build Summary from Text Load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="302,42"
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load"
+          TopLeft="139,89" />
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table"
+          TopLeft="131,454" />
+        <NodeLayout
+          Size="295,42"
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Convert Data Types"
+          TopLeft="134,260" />
+        <EdgeLayout
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load.Paths[OLE DB Source Output]"
+          TopLeft="290,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.5,129"
+              Start="0,0"
+              End="-8.5,121.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.5"
+                    Point2="0,64.5"
+                    Point3="-4,64.5" />
+                  <mssgle:LineSegment
+                    End="-4.5,64.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,64.5"
+                    Point2="-8.5,64.5"
+                    Point3="-8.5,68.5" />
+                  <mssgle:LineSegment
+                    End="-8.5,121.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Complete Text Load from Staging\Build Summary from Text Load.Paths[Data Conversion Output]"
+          TopLeft="279,302">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,152"
+              Start="0,0"
+              End="0,144.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,144.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Staging Text Load">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Complete Text Load from Staging\Build Summary from Text Load\Daily Summary Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

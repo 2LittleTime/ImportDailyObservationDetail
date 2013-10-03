@@ -1,0 +1,3014 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/14/2013 1:30:31 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="VM_W8_DEV"
+  DTS:CreatorName="VM_W8_DEV\Blake"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{FC599B52-2A1E-4002-B4B0-A584DF07AEEE}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="DailyFileTextLoad"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{70224417-D739-4BED-9ABD-FBDD5542F2BE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E42C2895-EB5E-44B9-B50B-D4B41541F8CB}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=VM_W8_DEV;Initial Catalog=QCLCD_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0E0DC6D0-F761-43B2-89B2-6361BD34F701}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::ImportFileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WBAN"
+              DTS:DTSID="{6E5DF976-F786-49FC-AB5D-629E71B89605}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearMonthDay"
+              DTS:DTSID="{ED8CC77A-56E7-462C-B0F6-05E62EA79E08}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tmax"
+              DTS:DTSID="{2B5BC4CA-265A-42E6-9B96-C87FB43546C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TmaxFlag"
+              DTS:DTSID="{239F3672-4817-445A-A5A8-C25C8A14D92F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tmin"
+              DTS:DTSID="{6E923144-3F03-4625-A484-492BC3201A91}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TminFlag"
+              DTS:DTSID="{D5C24010-2497-4272-AF93-5785B4FE9FCC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tavg"
+              DTS:DTSID="{13BEF97C-FD13-4ED1-A2D8-0E71C820B6C4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TavgFlag"
+              DTS:DTSID="{621CDC18-F5B3-458F-AAF2-6611EC75427A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Depart"
+              DTS:DTSID="{D05107B5-61EC-4A36-AA7A-9B1309ACB64B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepartFlag"
+              DTS:DTSID="{1722AC2E-F06B-4BE8-BCAF-AE8C4074FC2D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DewPoint"
+              DTS:DTSID="{22F68189-85C1-40DA-90CF-78FFE6493163}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DewPointFlag"
+              DTS:DTSID="{C0E04B49-5F51-4FD3-AF70-BE06B3881350}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WetBulb"
+              DTS:DTSID="{1F497D61-C299-41A4-B30B-7098D5BDA533}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WetBulbFlag"
+              DTS:DTSID="{8D27DA25-46D1-4625-9C6C-0E664F85F6CC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Heat"
+              DTS:DTSID="{84C68D36-10E3-4C85-9141-25C3A0847B62}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HeatFlag"
+              DTS:DTSID="{EC4EB521-50E8-46FB-B0EC-1E913E2B8C08}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cool"
+              DTS:DTSID="{599002A3-E14E-4DFA-ADA1-19659EA42FA3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CoolFlag"
+              DTS:DTSID="{5314EC27-E7C3-4A9A-AF17-9A7680892659}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sunrise"
+              DTS:DTSID="{D89E4416-F21E-4D68-A1BF-5D69BD798978}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SunriseFlag"
+              DTS:DTSID="{43ACE807-7660-4679-BFDE-492683B1DA49}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sunset"
+              DTS:DTSID="{8AE6B01A-669F-4813-9EB4-5D0F42E3E7FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SunsetFlag"
+              DTS:DTSID="{26AAFC11-BDB8-47E6-96A6-CC3AC4885E27}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CodeSum"
+              DTS:DTSID="{30ED483F-F72A-4382-AEA1-563258B4C3EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CodeSumFlag"
+              DTS:DTSID="{AC8561C7-4AA5-42DB-AFD5-7E0A6D9875DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Depth"
+              DTS:DTSID="{2C83D12C-E440-4662-B508-D1251B06DA5F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepthFlag"
+              DTS:DTSID="{11EE4791-A587-4669-A1AC-BB67D647D0F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Water1"
+              DTS:DTSID="{9CF835E0-A6E5-469B-98C1-99EE7116F36A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Water1Flag"
+              DTS:DTSID="{A6954EDC-1613-4E95-8358-44428CE272EC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SnowFall"
+              DTS:DTSID="{BF16486E-8DC2-4D9D-922D-DC43DF2481D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SnowFallFlag"
+              DTS:DTSID="{D07747C2-27AB-415B-9B19-DDE82E70E7C7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PrecipTotal"
+              DTS:DTSID="{5444C24D-F7DE-4E72-9ACF-5526EB59A295}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PrecipTotalFlag"
+              DTS:DTSID="{64B23D3A-C477-4A46-B70B-CB63FEBA5CB5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StnPressure"
+              DTS:DTSID="{72552172-DFCD-497F-98F1-B78342105F48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StnPressureFlag"
+              DTS:DTSID="{96F3AB1A-B2D1-4F91-9BC6-FBAC2C219309}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SeaLevel"
+              DTS:DTSID="{4A71BA42-38BA-4924-BF15-10F040587053}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SeaLevelFlag"
+              DTS:DTSID="{B318D5D5-75EF-4B8B-B88B-E77B8839983E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ResultSpeed"
+              DTS:DTSID="{B01A6E10-86B2-4E83-AE02-6AF82DD36F2A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ResultSpeedFlag"
+              DTS:DTSID="{60F4F642-267E-4D16-9C5D-74BECFAF356E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ResultDir"
+              DTS:DTSID="{7FEF9F28-AAB7-40BE-AD5D-BE690BA7D601}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ResultDirFlag"
+              DTS:DTSID="{75938303-F0B6-4602-8E6D-4A93CF1634AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AvgSpeed"
+              DTS:DTSID="{D72D845E-2FCC-44F0-89BC-65D37FD8F571}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AvgSpeedFlag"
+              DTS:DTSID="{3C3D6935-7471-4C11-86DE-97684CBE514E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max5Speed"
+              DTS:DTSID="{42388076-FA99-4E7F-A095-24F1A32773A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max5SpeedFlag"
+              DTS:DTSID="{F5359210-9C0B-41B4-87EF-85D34E95F458}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max5Dir"
+              DTS:DTSID="{6777231B-A8A8-4AD3-8895-2186B6F00848}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max5DirFlag"
+              DTS:DTSID="{54B162E1-A560-4A91-8863-252A946E6534}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max2Speed"
+              DTS:DTSID="{86451ED5-876A-4761-8DAF-F37B66D279E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max2SpeedFlag"
+              DTS:DTSID="{B09500D2-70F8-4509-BC1F-15435B7DBA22}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max2Dir"
+              DTS:DTSID="{AE516D16-B5EA-49F6-AF0A-BBDF98F1B5D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Max2DirFlag"
+              DTS:DTSID="{41A7A09C-E9BC-462F-B8E2-C0A4294A3F8D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{777C72D2-ADC8-4792-ADA2-AC59AEA990E5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ImportFileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Staging Table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9EF67894-7080-4EFB-B7FC-17DBFDBF6E2B}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Staging Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E42C2895-EB5E-44B9-B50B-D4B41541F8CB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table DailyTextStg" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loop Through Daily Files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{DEE98F29-0ECB-49B6-8F5A-7C80B1B14B3E}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loop Through Daily Files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="DTS.ForEachFileEnumerator.3"
+        DTS:DTSID="{28F2FB2F-2FC1-4315-BD1C-22CB872F62B6}"
+        DTS:ObjectName="{28F2FB2F-2FC1-4315-BD1C-22CB872F62B6}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="F:\QCLCD_RawData\extract" />
+            <FEFEProperty
+              FileSpec="*daily.txt" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Loop Through Daily Files\Import Daily File"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:DelayValidation="True"
+          DTS:DTSID="{0BF28792-3141-4CBA-A753-F3997A6856F9}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Import Daily File"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              defaultBufferSize="3145728"
+              version="1">
+              <components>
+                <component
+                  refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destination - DailyTextStg"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DailyTextStg]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[WBAN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WBAN"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WBAN]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WBAN]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[YearMonthDay]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="YearMonthDay"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[YearMonthDay]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[YearMonthDay]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Tmax]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Tmax"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tmax]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmax]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[TmaxFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TmaxFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TmaxFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TmaxFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Tmin]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Tmin"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tmin]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmin]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[TminFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TminFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TminFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TminFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Tavg]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Tavg"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tavg]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tavg]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[TavgFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TavgFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TavgFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TavgFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Depart]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Depart"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Depart]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depart]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[DepartFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DepartFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DepartFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepartFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[DewPoint]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DewPoint"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DewPoint]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPoint]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[DewPointFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DewPointFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DewPointFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPointFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[WetBulb]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WetBulb"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WetBulb]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulb]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[WetBulbFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="WetBulbFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WetBulbFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulbFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Heat]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Heat"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Heat]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Heat]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[HeatFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HeatFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[HeatFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[HeatFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Cool]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Cool"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Cool]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Cool]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[CoolFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CoolFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CoolFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CoolFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Sunrise]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Sunrise"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Sunrise]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunrise]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SunriseFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SunriseFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SunriseFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunriseFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Sunset]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Sunset"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Sunset]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunset]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SunsetFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SunsetFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SunsetFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunsetFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[CodeSum]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CodeSum"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CodeSum]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSum]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[CodeSumFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CodeSumFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CodeSumFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSumFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Depth]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Depth"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Depth]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depth]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[DepthFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DepthFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DepthFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepthFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Water1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Water1"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Water1]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Water1Flag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Water1Flag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Water1Flag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1Flag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SnowFall]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SnowFall"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SnowFall]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFall]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SnowFallFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SnowFallFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SnowFallFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFallFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[PrecipTotal]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PrecipTotal"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[PrecipTotal]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotal]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[PrecipTotalFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PrecipTotalFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[PrecipTotalFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotalFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[StnPressure]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="StnPressure"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[StnPressure]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressure]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[StnPressureFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="StnPressureFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[StnPressureFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressureFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SeaLevel]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SeaLevel"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SeaLevel]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevel]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[SeaLevelFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SeaLevelFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SeaLevelFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevelFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[ResultSpeed]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ResultSpeed"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultSpeed]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeed]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[ResultSpeedFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ResultSpeedFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultSpeedFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeedFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[ResultDir]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ResultDir"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultDir]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDir]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[ResultDirFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ResultDirFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultDirFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDirFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[AvgSpeed]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="AvgSpeed"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[AvgSpeed]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeed]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[AvgSpeedFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="AvgSpeedFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[AvgSpeedFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeedFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max5Speed]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max5Speed"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5Speed]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Speed]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max5SpeedFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max5SpeedFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5SpeedFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5SpeedFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max5Dir]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max5Dir"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5Dir]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Dir]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max5DirFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max5DirFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5DirFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5DirFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max2Speed]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max2Speed"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2Speed]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Speed]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max2SpeedFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max2SpeedFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2SpeedFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2SpeedFlag]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max2Dir]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max2Dir"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2Dir]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Dir]" />
+                        <inputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].Columns[Max2DirFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Max2DirFlag"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2DirFlag]"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2DirFlag]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WBAN" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[YearMonthDay]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="YearMonthDay" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tmax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tmax" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TmaxFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TmaxFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tmin]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tmin" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TminFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TminFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Tavg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tavg" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[TavgFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TavgFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Depart]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Depart" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DepartFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DepartFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DewPoint]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DewPoint" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DewPointFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DewPointFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WetBulb]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WetBulb" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[WetBulbFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WetBulbFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Heat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Heat" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[HeatFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HeatFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Cool]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Cool" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CoolFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CoolFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Sunrise]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sunrise" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SunriseFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SunriseFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Sunset]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sunset" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SunsetFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SunsetFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CodeSum]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CodeSum" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[CodeSumFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CodeSumFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Depth]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Depth" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[DepthFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DepthFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Water1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Water1" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Water1Flag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Water1Flag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SnowFall]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SnowFall" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SnowFallFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SnowFallFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[PrecipTotal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PrecipTotal" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[PrecipTotalFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PrecipTotalFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[StnPressure]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StnPressure" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[StnPressureFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StnPressureFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SeaLevel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SeaLevel" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[SeaLevelFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SeaLevelFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultSpeed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultSpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultDir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultDir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[ResultDirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultDirFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[AvgSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AvgSpeed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[AvgSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AvgSpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5Speed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5SpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5Dir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max5DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5DirFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2Speed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2SpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2Dir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input].ExternalColumns[Max2DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2DirFlag" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File"
+                  componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Looped Source File"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WBAN]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WBAN]"
+                          name="WBAN"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[YearMonthDay]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[YearMonthDay]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[YearMonthDay]"
+                          name="YearMonthDay"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmax]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tmax]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmax]"
+                          name="Tmax"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TmaxFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TmaxFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TmaxFlag]"
+                          name="TmaxFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmin]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tmin]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tmin]"
+                          name="Tmin"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TminFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TminFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TminFlag]"
+                          name="TminFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tavg]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tavg]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Tavg]"
+                          name="Tavg"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TavgFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TavgFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[TavgFlag]"
+                          name="TavgFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depart]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Depart]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depart]"
+                          name="Depart"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepartFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DepartFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepartFlag]"
+                          name="DepartFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPoint]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DewPoint]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPoint]"
+                          name="DewPoint"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPointFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DewPointFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DewPointFlag]"
+                          name="DewPointFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulb]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WetBulb]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulb]"
+                          name="WetBulb"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulbFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WetBulbFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[WetBulbFlag]"
+                          name="WetBulbFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Heat]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Heat]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Heat]"
+                          name="Heat"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[HeatFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[HeatFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[HeatFlag]"
+                          name="HeatFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Cool]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Cool]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Cool]"
+                          name="Cool"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CoolFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CoolFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CoolFlag]"
+                          name="CoolFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunrise]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Sunrise]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunrise]"
+                          name="Sunrise"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunriseFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SunriseFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunriseFlag]"
+                          name="SunriseFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunset]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Sunset]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Sunset]"
+                          name="Sunset"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunsetFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SunsetFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SunsetFlag]"
+                          name="SunsetFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSum]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CodeSum]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSum]"
+                          name="CodeSum"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSumFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CodeSumFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[CodeSumFlag]"
+                          name="CodeSumFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depth]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Depth]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Depth]"
+                          name="Depth"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepthFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DepthFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[DepthFlag]"
+                          name="DepthFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Water1]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1]"
+                          name="Water1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1Flag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Water1Flag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Water1Flag]"
+                          name="Water1Flag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFall]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SnowFall]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFall]"
+                          name="SnowFall"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFallFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SnowFallFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SnowFallFlag]"
+                          name="SnowFallFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotal]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[PrecipTotal]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotal]"
+                          name="PrecipTotal"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotalFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[PrecipTotalFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[PrecipTotalFlag]"
+                          name="PrecipTotalFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressure]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[StnPressure]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressure]"
+                          name="StnPressure"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressureFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[StnPressureFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[StnPressureFlag]"
+                          name="StnPressureFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevel]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SeaLevel]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevel]"
+                          name="SeaLevel"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevelFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SeaLevelFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[SeaLevelFlag]"
+                          name="SeaLevelFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultSpeed]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeed]"
+                          name="ResultSpeed"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultSpeedFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultSpeedFlag]"
+                          name="ResultSpeedFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDir]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultDir]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDir]"
+                          name="ResultDir"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultDirFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[ResultDirFlag]"
+                          name="ResultDirFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[AvgSpeed]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeed]"
+                          name="AvgSpeed"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[AvgSpeedFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[AvgSpeedFlag]"
+                          name="AvgSpeedFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5Speed]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Speed]"
+                          name="Max5Speed"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5SpeedFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5SpeedFlag]"
+                          name="Max5SpeedFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5Dir]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5Dir]"
+                          name="Max5Dir"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5DirFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max5DirFlag]"
+                          name="Max5DirFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2Speed]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Speed]"
+                          name="Max2Speed"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2SpeedFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2SpeedFlag]"
+                          name="Max2SpeedFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2Dir]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2Dir]"
+                          name="Max2Dir"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2DirFlag]"
+                          length="50"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].Columns[Max2DirFlag]"
+                          name="Max2DirFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WBAN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WBAN" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[YearMonthDay]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="YearMonthDay" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tmax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tmax" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TmaxFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TmaxFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tmin]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tmin" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TminFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TminFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Tavg]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Tavg" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[TavgFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TavgFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Depart]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Depart" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DepartFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DepartFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DewPoint]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DewPoint" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DewPointFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DewPointFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WetBulb]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WetBulb" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[WetBulbFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="WetBulbFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Heat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Heat" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[HeatFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HeatFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Cool]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Cool" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CoolFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CoolFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Sunrise]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sunrise" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SunriseFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SunriseFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Sunset]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Sunset" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SunsetFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SunsetFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CodeSum]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CodeSum" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[CodeSumFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CodeSumFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Depth]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Depth" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[DepthFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DepthFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Water1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Water1" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Water1Flag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Water1Flag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SnowFall]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SnowFall" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SnowFallFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SnowFallFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[PrecipTotal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PrecipTotal" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[PrecipTotalFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PrecipTotalFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[StnPressure]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StnPressure" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[StnPressureFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StnPressureFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SeaLevel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SeaLevel" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[SeaLevelFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SeaLevelFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultSpeed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultSpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultDir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultDir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[ResultDirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ResultDirFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[AvgSpeed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AvgSpeed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[AvgSpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AvgSpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5Speed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5SpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5Dir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max5DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max5DirFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2Speed]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2Speed" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2SpeedFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2SpeedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2Dir]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2Dir" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output].ExternalColumns[Max2DirFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Max2DirFlag" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Loop Through Daily Files\Import Daily File.Paths[Flat File Source Output]"
+                  endId="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg.Inputs[Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Loop Through Daily Files\Import Daily File\Looped Source File.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{93611065-4342-4A86-8B42-0E6D0B517EAB}"
+          DTS:ObjectName="{93611065-4342-4A86-8B42-0E6D0B517EAB}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ImportFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Disabled="True"
+      DTS:DTSID="{E0FE03C3-109A-4CF5-B189-212803123E66}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E42C2895-EB5E-44B9-B50B-D4B41541F8CB}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[DailyTextStg] (&#xA;[WBAN] varchar(50),&#xA;[YearMonthDay] varchar(50),&#xA;[Tmax] varchar(50),&#xA;[TmaxFlag] varchar(50),&#xA;[Tmin] varchar(50),&#xA;[TminFlag] varchar(50),&#xA;[Tavg] varchar(50),&#xA;[TavgFlag] varchar(50),&#xA;[Depart] varchar(50),&#xA;[DepartFlag] varchar(50),&#xA;[DewPoint] varchar(50),&#xA;[DewPointFlag] varchar(50),&#xA;[WetBulb] varchar(50),&#xA;[WetBulbFlag] varchar(50),&#xA;[Heat] varchar(50),&#xA;[HeatFlag] varchar(50),&#xA;[Cool] varchar(50),&#xA;[CoolFlag] varchar(50),&#xA;[Sunrise] varchar(50),&#xA;[SunriseFlag] varchar(50),&#xA;[Sunset] varchar(50),&#xA;[SunsetFlag] varchar(50),&#xA;[CodeSum] varchar(50),&#xA;[CodeSumFlag] varchar(50),&#xA;[Depth] varchar(50),&#xA;[DepthFlag] varchar(50),&#xA;[Water1] varchar(50),&#xA;[Water1Flag] varchar(50),&#xA;[SnowFall] varchar(50),&#xA;[SnowFallFlag] varchar(50),&#xA;[PrecipTotal] varchar(50),&#xA;[PrecipTotalFlag] varchar(50),&#xA;[StnPressure] varchar(50),&#xA;[StnPressureFlag] varchar(50),&#xA;[SeaLevel] varchar(50),&#xA;[SeaLevelFlag] varchar(50),&#xA;[ResultSpeed] varchar(50),&#xA;[ResultSpeedFlag] varchar(50),&#xA;[ResultDir] varchar(50),&#xA;[ResultDirFlag] varchar(50),&#xA;[AvgSpeed] varchar(50),&#xA;[AvgSpeedFlag] varchar(50),&#xA;[Max5Speed] varchar(50),&#xA;[Max5SpeedFlag] varchar(50),&#xA;[Max5Dir] varchar(50),&#xA;[Max5DirFlag] varchar(50),&#xA;[Max2Speed] varchar(50),&#xA;[Max2SpeedFlag] varchar(50),&#xA;[Max2Dir] varchar(50),&#xA;[Max2DirFlag] varchar(50)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A0EFDAD1-C8B4-401F-9798-55AF508DEE17}"
+      DTS:From="Package\Clear Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loop Through Daily Files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="1038.5,37.5" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Loop Through Daily Files\Import Daily File"
+          TopLeft="103.5,30.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="463,188"
+          Size="463,231"
+          Id="Package\Loop Through Daily Files"
+          TopLeft="120,245" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Clear Staging Table"
+          TopLeft="242,56" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="327.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24,147"
+              Start="0,0"
+              End="24,139.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.5"
+                    Point2="0,73.5"
+                    Point3="4,73.5" />
+                  <mssgle:LineSegment
+                    End="20,73.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20,73.5"
+                    Point2="24,73.5"
+                    Point3="24,77.5" />
+                  <mssgle:LineSegment
+                    End="24,139.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loop Through Daily Files\Import Daily File">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Loop Through Daily Files\Import Daily File\Destination - DailyTextStg"
+          TopLeft="103.5,222.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Loop Through Daily Files\Import Daily File\Looped Source File"
+          TopLeft="137.5,52.5" />
+        <EdgeLayout
+          Id="Package\Loop Through Daily Files\Import Daily File.Paths[Flat File Source Output]"
+          TopLeft="221.5,94.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17,128"
+              Start="0,0"
+              End="-17,120.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60"
+                    Point2="0,64"
+                    Point3="-4,64" />
+                  <mssgle:LineSegment
+                    End="-13,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13,64"
+                    Point2="-17,64"
+                    Point3="-17,68" />
+                  <mssgle:LineSegment
+                    End="-17,120.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
